@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela de Serviços</title>
+    <style>
+        /* CSS */
+    </style>
+</head>
+<body>
+    <h1>Custos por serviço</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Serviço</th>
+                <th>Novembro</th>
+                <th>Dezembro</th>
+                <th class="diferenca">Diferença</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in dados_servicos %}
+            <tr>
+                <td>{{ item['servico'] }}</td>
+                <td>{{ item['novembro'] }}</td>
+                <td>{{ item['dezembro'] }}</td>
+                <td class="diferenca {{ 'positivo' if item['diferenca_num'] > 0 else 'negativo' if item['diferenca_num'] < 0 else '' }}">
+                    {{ item['diferenca'] }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h1>Custos por projeto</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Projeto</th>
+                <th>Novembro</th>
+                <th>Dezembro</th>
+                <th class="diferenca">Diferença</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in dados_projetos %}
+            <tr>
+                <td>{{ item['projeto'] }}</td>
+                <td>{{ item['novembro'] }}</td>
+                <td>{{ item['dezembro'] }}</td>
+                <td class="diferenca {{ 'positivo' if item['diferenca_num'] > 0 else 'negativo' if item['diferenca_num'] < 0 else '' }}">
+                    {{ item['diferenca'] }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
